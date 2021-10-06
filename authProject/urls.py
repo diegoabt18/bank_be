@@ -23,4 +23,5 @@ urlpatterns = [
     path('user/', views.UserCreateView.as_view()),
     path('user/<int:pk>/', views.UserDetailView.as_view()),
     path('userRegister/', views.RegisteruserCreateview.as_view()),
+    path('userList/', views.RegisteruserListView.as_view()),
 ]
