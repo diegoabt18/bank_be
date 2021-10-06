@@ -1,2 +1,3 @@
 from .accountSerializer import AccountSerializer
 from .userSerializer import UserSerializer
+from .registeruserSerializer import RegisteruserSerealizer
