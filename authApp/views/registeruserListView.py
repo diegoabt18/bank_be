@@ -13,4 +13,4 @@ class RegisteruserListView(views.APIView):
     def get(self, request):
         queryset = self.get_queryset()
         serializer = RegisteruserSerealizer(queryset, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data,  status=status.HTTP_200_OK)
