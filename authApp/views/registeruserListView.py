@@ -6,10 +6,10 @@ from rest_framework.permissions import IsAuthenticated
 from authApp.serializers.registeruserSerializer import RegisteruserSerealizer
 
 class RegisteruserListView(views.APIView):
-    queryset = Register_user.objects.all()
+    
     serializer_class = RegisteruserSerealizer
   
     def get(self, request):
-        queryset = self.get_queryset()
+        queryset = Register_user.objects.all()
         serializer = RegisteruserSerealizer(queryset, many=True)
         return Response(serializer.data,  status=status.HTTP_200_OK)
