@@ -8,8 +8,7 @@ from authApp.serializers.registeruserSerializer import RegisteruserSerealizer
 class RegisteruserListView(views.APIView):
     queryset = Register_user.objects.all()
     serializer_class = RegisteruserSerealizer
-    permission_classes = (IsAuthenticated,)
-
+  
     def get(self, request):
         queryset = self.get_queryset()
         serializer = RegisteruserSerealizer(queryset, many=True)
