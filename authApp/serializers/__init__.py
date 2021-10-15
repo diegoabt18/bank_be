@@ -1,2 +1,3 @@
 from .profileSerializer import ProfileSerializer
 from .userSerializer import UserSerializer
+from .productSerializer import ProductSerializer
