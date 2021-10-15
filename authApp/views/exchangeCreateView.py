@@ -4,11 +4,11 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
 
-from authApp.serializers.profileSerializer import ProfileSerializer
+from authApp.serializers.exchangeSerizalizer import ExchangeSerializer
 
 
-class ProfileCreateView(generics.CreateAPIView):
-    serializer_class = ProfileSerializer
+class ExchangeCreateView(generics.CreateAPIView):
+    serializer_class = ExchangeSerializer
     permission_classes = (IsAuthenticated, )
 
     def post(self, request, *args, **kwargs):
@@ -17,12 +17,11 @@ class ProfileCreateView(generics.CreateAPIView):
         valid_data = tokenBackend.decode(token, verify=False)
 
         if valid_data['user_id'] != request.data['user_id']:
-            stringResponse = {'detail':'Acceso no autorizado - Creación de Perfil'}
+            stringResponse = {'detail':'Acceso no autorizado - Creación de Intercambio'}
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
 
-        serializer = ProfileSerializer(data=request.data['profile_data'])
+        serializer = ExchangeSerializer(data=request.data['exchange_data'])
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        return Response("Perfil creado", status=status.HTTP_201_CREATED)
-
+        return Response("Intercambio creado", status=status.HTTP_201_CREATED)

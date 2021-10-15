@@ -27,5 +27,11 @@ urlpatterns = [
     path('user/<int:pk>', views.UserDetailView.as_view()),
     path('profile/', views.ProfileCreateView.as_view()),
     path('profile/<int:user>/<int:pk>', views.ProfileDetailView.as_view()),
-    path('profile/update/<int:user>/<int:pk>', views.ProfileUpdateView.as_view())
+    path('profile/update/<int:user>/<int:pk>', views.ProfileUpdateView.as_view()),
+    path('product/', views.ProductCreateView.as_view()),
+    path('product/<int:user>/<int:pk>', views.ProductDetailView.as_view()),
+    path('exchange/', views.ExchangeCreateView.as_view()),
+    path('exchange/<int:user>/<int:pk>', views.ExchangeDetailView.as_view()),
+
 ]
+

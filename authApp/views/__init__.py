@@ -3,3 +3,7 @@ from .userDetailView import UserDetailView
 from .profileCreateView import ProfileCreateView
 from .profileDetailView import ProfileDetailView
 from .profileUpdateView import ProfileUpdateView
+from .productCreateView import ProductCreateView
+from .productDetailView import ProductDetailView
+from .exchangeCreateView import ExchangeCreateView
+from .exchangeDetailView import ExchangeDetailView

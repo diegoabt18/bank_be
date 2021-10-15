@@ -10,13 +10,43 @@ class ExchangeSerializer(serializers.ModelSerializer):
 
 
     def to_representation(self, obj):
+        product = Product.objects.get(prod_id=obj.exch_prod_id.prod_id)
+        userorigin = User.objects.get(id=obj.exch_userorigin_id.id)
+        userdestination = User.objects.get(id=obj.exch_userdestination_id.id)
         exchange = Exchange.objects.get(exch_id=obj.exch_id)
+
         return {
             "exch_id" : exchange.exch_id, 
-            "exch_userorigin_id" : exchange.exch_userorigin_id, 
-            "exch_userdestination_id" : exchange.exch_userdestination_id, 
-            "exch_prod_id" : exchange.exch_prod_id, 
-            "exch_fecha" : exchange.exch_fecha
+            "exch_fecha" : exchange.exch_fecha,
+            "exch_userorigin_id" : {
+                "id": userorigin.id,
+                "username": userorigin.username,
+                "name": userorigin.name,
+                "last_name": userorigin.last_name,
+                "email": userorigin.email,
+                "address": userorigin.address,
+                "cellphone": userorigin.cellphone
+            },
+            "exch_userdestination_id" : {
+                "id": userdestination.id,
+                "username": userdestination.username,
+                "name": userdestination.name,
+                "last_name": userdestination.last_name,
+                "email": userdestination.email,
+                "address": userdestination.address,
+                "cellphone": userdestination.cellphone
+            },
+            "exch_prod_id" : {
+                "prod_id": product.prod_id, 
+                "prod_name": product.prod_name, 
+                "prod_artist": product.prod_artist, 
+                "prod_genre": product.prod_genre, 
+                "prod_rate": product.prod_rate, 
+                "prod_type": product.prod_type,
+                "prod_description": product.prod_description,
+                "prod_urlproduct": product.prod_urlproduct,
+                "prod_urlimagen": product.prod_urlimagen,
+            }
         }
 
 

@@ -19,7 +19,7 @@ class ProfileDetailView(generics.RetrieveAPIView):
         valid_data = tokenBackend.decode(token, verify=False)
 
         if valid_data['user_id'] != self.kwargs['user']:
-            stringResponse = {'detail':'Acceso no autorizado - Get un elemento'}
+            stringResponse = {'detail':'Acceso no autorizado - Información detallada de Perfil'}
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
 
         return super().get(request, *args, **kwargs)    
