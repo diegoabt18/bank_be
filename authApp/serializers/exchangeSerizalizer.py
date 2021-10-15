@@ -6,19 +6,18 @@ from rest_framework import serializers
 class ExchangeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exchange
-        fields = ['exch_id', 'exch_userorigin_id', 'exch_userdestination_id', 'exch_prod_id', 'exch_fecha']
-
+        fields = ['exch_userorigin', 'exch_userdestination', 'exch_prod', 'exch_fecha']
 
     def to_representation(self, obj):
-        product = Product.objects.get(prod_id=obj.exch_prod_id.prod_id)
-        userorigin = User.objects.get(id=obj.exch_userorigin_id.id)
-        userdestination = User.objects.get(id=obj.exch_userdestination_id.id)
+        product = Product.objects.get(prod_id=obj.exch_prod.prod_id)
+        userorigin = User.objects.get(id=obj.exch_userorigin.id)
+        userdestination = User.objects.get(id=obj.exch_userdestination.id)
         exchange = Exchange.objects.get(exch_id=obj.exch_id)
 
         return {
             "exch_id" : exchange.exch_id, 
             "exch_fecha" : exchange.exch_fecha,
-            "exch_userorigin_id" : {
+            "exch_userorigin" : {
                 "id": userorigin.id,
                 "username": userorigin.username,
                 "name": userorigin.name,
@@ -27,7 +26,7 @@ class ExchangeSerializer(serializers.ModelSerializer):
                 "address": userorigin.address,
                 "cellphone": userorigin.cellphone
             },
-            "exch_userdestination_id" : {
+            "exch_userdestination" : {
                 "id": userdestination.id,
                 "username": userdestination.username,
                 "name": userdestination.name,
@@ -36,7 +35,7 @@ class ExchangeSerializer(serializers.ModelSerializer):
                 "address": userdestination.address,
                 "cellphone": userdestination.cellphone
             },
-            "exch_prod_id" : {
+            "exch_prod" : {
                 "prod_id": product.prod_id, 
                 "prod_name": product.prod_name, 
                 "prod_artist": product.prod_artist, 

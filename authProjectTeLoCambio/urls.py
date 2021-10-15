@@ -32,6 +32,8 @@ urlpatterns = [
     path('product/<int:user>/<int:pk>', views.ProductDetailView.as_view()),
     path('exchange/', views.ExchangeCreateView.as_view()),
     path('exchange/<int:user>/<int:pk>', views.ExchangeDetailView.as_view()),
+    path('favorite/', views.FavoritesCreateView.as_view()),
+    path('favorite/<int:user>/<int:pk>', views.FavoriteDetailView.as_view()),
 
 ]
 

@@ -7,3 +7,5 @@ from .productCreateView import ProductCreateView
 from .productDetailView import ProductDetailView
 from .exchangeCreateView import ExchangeCreateView
 from .exchangeDetailView import ExchangeDetailView
+from .favoritesCreateView import FavoritesCreateView
+from .favoritesDetailView import FavoriteDetailView
