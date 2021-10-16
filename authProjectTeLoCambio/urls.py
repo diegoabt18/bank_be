@@ -25,6 +25,7 @@ urlpatterns = [
     path('refresh/', TokenRefreshView.as_view()),
     path('user/', views.UserCreateView.as_view()),
     path('user/<int:pk>', views.UserDetailView.as_view()),
+    path('user/update/<int:user>/<int:pk>', views.UserUpdateView.as_view()),
     path('profile/', views.ProfileCreateView.as_view()),
     path('profile/<int:user>/<int:pk>', views.ProfileDetailView.as_view()),
     path('profile/update/<int:user>/<int:pk>', views.ProfileUpdateView.as_view()),
@@ -39,5 +40,6 @@ urlpatterns = [
     path('favorite/', views.FavoritesCreateView.as_view()),
     path('favorite/<int:user>/<int:pk>', views.FavoriteDetailView.as_view()),
     path('favorite/list/<int:user>', views.FavoriteUserListView.as_view()),
+    path('favorite/update/<int:user>/<int:pk>', views.FavoriteUpdateView.as_view()),
 ]
 
