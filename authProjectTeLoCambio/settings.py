@@ -105,7 +105,7 @@ DATABASES = {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'teLoCambio_dbase',
     'USER': 'postgres',
-    'PASSWORD': 'MinTIC2022u$u4r!0',
+    'PASSWORD': '12345',
     'HOST': 'localhost',
     'PORT': '5432',
     }

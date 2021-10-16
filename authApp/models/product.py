@@ -13,3 +13,4 @@ class Product(models.Model):
     prod_description = models.CharField('Description', max_length=50, default=0)
     prod_urlproduct =models.CharField('imagen', max_length=15, default=0)
     prod_urlimagen =models.CharField('imagen', max_length=15, default=0)
+    prod_state =models.BooleanField('State')
