@@ -30,10 +30,14 @@ urlpatterns = [
     path('profile/update/<int:user>/<int:pk>', views.ProfileUpdateView.as_view()),
     path('product/', views.ProductCreateView.as_view()),
     path('product/<int:user>/<int:pk>', views.ProductDetailView.as_view()),
+    path('product/remove/<int:user>/<int:pk>', views.ProductDeteleView.as_view()),
+    path('product/list/<int:user>', views.ProductUserListView.as_view()),
     path('exchange/', views.ExchangeCreateView.as_view()),
     path('exchange/<int:user>/<int:pk>', views.ExchangeDetailView.as_view()),
+    path('exchange/list/origin/<int:user>', views.ExchangeUserOriginListView.as_view()),
+    path('exchange/list/destination/<int:user>', views.ExchangeUserDestinationListView.as_view()),
     path('favorite/', views.FavoritesCreateView.as_view()),
     path('favorite/<int:user>/<int:pk>', views.FavoriteDetailView.as_view()),
-
+    path('favorite/list/<int:user>', views.FavoriteUserListView.as_view()),
 ]
 
