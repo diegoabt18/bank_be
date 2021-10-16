@@ -33,6 +33,7 @@ urlpatterns = [
     path('product/remove/<int:user>/<int:pk>', views.ProductDeteleView.as_view()),
     path('product/list/<int:user>', views.ProductUserListView.as_view()),
     path('product/update/<int:user>/<int:pk>', views.ProductUpdateView.as_view()),
+    path('product/liststate/<int:user>', views.ProductUserListStateView.as_view()),
     path('exchange/', views.ExchangeCreateView.as_view()),
     path('exchange/<int:user>/<int:pk>', views.ExchangeDetailView.as_view()),
     path('exchange/list/origin/<int:user>', views.ExchangeUserOriginListView.as_view()),

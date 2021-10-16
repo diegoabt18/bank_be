@@ -8,6 +8,7 @@ from .productDetailView import ProductDetailView
 from .productDeleteView import ProductDeteleView
 from .productUserListView import ProductUserListView
 from .productUpdateView import ProductUpdateView
+from .productUserListStateView import ProductUserListStateView
 from .exchangeCreateView import ExchangeCreateView
 from .exchangeDetailView import ExchangeDetailView
 from .exchangeUserOriginListView import ExchangeUserOriginListView
