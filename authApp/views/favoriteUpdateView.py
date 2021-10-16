@@ -7,7 +7,6 @@ from rest_framework.permissions import IsAuthenticated
 from authApp.models.favorite import Favorite
 from authApp.serializers.favoriteSerizalizer import FavoriteSerializer
 
-
 class FavoriteUpdateView(generics.UpdateAPIView):
     serializer_class = FavoriteSerializer
     permission_classes = (IsAuthenticated, )
