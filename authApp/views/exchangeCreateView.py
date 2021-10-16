@@ -5,7 +5,7 @@ from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
 
 from authApp.serializers.exchangeSerizalizer import ExchangeSerializer
-
+from authApp.models.product import Product
 
 class ExchangeCreateView(generics.CreateAPIView):
     serializer_class = ExchangeSerializer
@@ -24,4 +24,11 @@ class ExchangeCreateView(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
+        datos = request.data['exchange_data']
+        id_user_origin =datos["exch_userorigin"]
+        id_user_destination = datos['exch_userdestination']
+        id_product = datos['exch_prod']
+        Product.objects.filter(prod_user=id_user_origin).filter(prod_id=id_product).update(prod_user = id_user_destination)
+        
         return Response("Intercambio creado", status=status.HTTP_201_CREATED)
+

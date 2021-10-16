@@ -105,9 +105,13 @@ DATABASES = {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'teLoCambio_dbase',
     'USER': 'postgres',
+<<<<<<< HEAD
     'PASSWORD': '',
+=======
+    'PASSWORD': '1234',
+>>>>>>> 4c9a83b20637c10ea8f3c16997f22b30ebd0810f
     'HOST': 'localhost',
-    'PORT': '5432',
+    'PORT': '5433',
     }
 }
 

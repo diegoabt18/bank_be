@@ -5,7 +5,7 @@ from rest_framework import serializers
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ['prod_user', 'prod_name', 'prod_artist', 'prod_genre', 'prod_rate', 'prod_type', 'prod_description', 'prod_urlproduct', 'prod_urlimagen']
+        fields = ['prod_user', 'prod_name', 'prod_artist', 'prod_genre', 'prod_rate', 'prod_type', 'prod_description', 'prod_urlproduct', 'prod_urlimagen', 'prod_state']
 
     def to_representation(self, obj):
         
@@ -22,6 +22,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "prod_description": product.prod_description,
             "prod_urlproduct": product.prod_urlproduct,
             "prod_urlimagen": product.prod_urlimagen,
+            "prod_state": product.prod_state,
             "prod_user": {
                 "id": user.id,
                 "username": user.username,
