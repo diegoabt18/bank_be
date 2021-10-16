@@ -7,21 +7,19 @@ from rest_framework.permissions import IsAuthenticated
 from authApp.models.favorite import Favorite
 from authApp.serializers.favoriteSerizalizer import FavoriteSerializer
 
-
-class FavoriteUpdateView(generics.UpdateAPIView):
+class FavoriteUserListView(generics.ListAPIView):
     serializer_class = FavoriteSerializer
     permission_classes = (IsAuthenticated, )
-    queryset = Favorite.objects.all()
 
-    def post(self, request, *args, **kwargs):
-        token = request.META.get('HTTP_AUTHORIZATION')[7:]
+    def get_queryset(self):
+        token = self.request.META.get('HTTP_AUTHORIZATION')[7:]
         tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
-        valid_data = tokenBackend.decode(token, verify=False)
+        valid_data = tokenBackend.decode(token,verify=False)
 
         if valid_data['user_id'] != self.kwargs['user']:
-            stringResponse = {'detail':'Acceso no autorizado - Actualización favorito'}
+            stringResponse = {'detail':'Acceso no autorizado - Lista de Favoritos'}
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
 
-        return super().update(request, *args, **kwargs)
+        queryset = Favorite.objects.filter(favo_user_id=self.kwargs['user'])
 
-
+        return queryset
