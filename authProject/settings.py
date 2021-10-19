@@ -101,10 +101,10 @@ WSGI_APPLICATION = 'authProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd1rf6nsvtu5thp',
-        'USER': 'knojzrcjeftpeu',
-        'PASSWORD': 'b0500dbfc5ee77ed86c84acceedb18ef85fe7e71e6674dae484134ad0430d688',
-        'HOST': 'ec2-44-198-146-224.compute-1.amazonaws.com',
+        'NAME': 'dfbplkncp9umuv',
+        'USER': 'fszaewozqkxlgc',
+        'PASSWORD': 'a9e2a66814e3cb0bfb03a5e19abaa21c3dbdc26c85838c75f1f0debfc0613310',
+        'HOST': 'ec2-35-171-171-27.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -154,4 +154,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+import django_heroku
 django_heroku.settings(locals())

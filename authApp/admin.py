@@ -1,9 +1,13 @@
 from django.contrib import admin
 from .models.user import User
-from .models.account import Account
-from .models.register_user import Register_user
+from .models.profile import Profile
+from .models.product import Product
+from .models.exchange import Exchange
+from .models.favorite import Favorite
 
 admin.site.register(User)
-admin.site.register(Account)
-admin.site.register(Register_user)
+admin.site.register(Profile)
+admin.site.register(Product)
+admin.site.register(Exchange)
+admin.site.register(Favorite)
 
