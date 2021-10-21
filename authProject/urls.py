@@ -16,6 +16,8 @@ Including another URLconf
 from django.urls import path
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 from authApp import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('login/', TokenObtainPairView.as_view()),
@@ -40,4 +42,4 @@ urlpatterns = [
     path('favorite/<int:user>/<int:pk>', views.FavoriteDetailView.as_view()),
     path('favorite/list/<int:user>', views.FavoriteUserListView.as_view()),
     path('favorite/update/<int:user>/<int:pk>', views.FavoriteUpdateView.as_view()),
-]
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

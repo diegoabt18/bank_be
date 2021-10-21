@@ -11,6 +11,6 @@ class Product(models.Model):
     prod_rate = models.BigIntegerField('Rate')
     prod_type = models.CharField('Type', max_length=15, default=0)
     prod_description = models.CharField('Description', max_length=50, default=0)
-    prod_urlproduct =models.CharField('imagen', max_length=15, default=0)
-    prod_urlimagen =models.CharField('imagen', max_length=15, default=0)
+    prod_urlproduct =models.FileField(upload_to='audio/', null=True)
+    prod_urlimagen =models.ImageField(upload_to='imagen/', null=True)
     prod_state =models.BooleanField('State')
