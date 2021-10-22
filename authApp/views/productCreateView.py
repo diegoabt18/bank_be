@@ -15,6 +15,9 @@ class ProductCreateView(generics.CreateAPIView):
         token = request.META.get('HTTP_AUTHORIZATION')[7:]
         tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
         valid_data = tokenBackend.decode(token, verify=False)
+        print("++++++++++++++++++++++++++++++++++++++++++++++")
+        valores=request.data['data']
+        print(valores)
 
         if valid_data['user_id'] != request.data['user_id']:
             stringResponse = {'detail':'Acceso no autorizado - Creación de producto'}
