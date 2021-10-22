@@ -18,6 +18,10 @@ class ProductCreateView(generics.CreateAPIView):
         print("++++++++++++++++++++++++++++++++++++++++++++++")
         valores=request.data['data']
         print(valores)
+        valores2=valores['product_data']
+        print(valores2)
+        valores3=valores2['prod_user']
+        print(valores3)
 
         if valid_data['user_id'] != request.data['user_id']:
             stringResponse = {'detail':'Acceso no autorizado - Creación de producto'}
