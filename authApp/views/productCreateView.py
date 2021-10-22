@@ -15,34 +15,26 @@ class ProductCreateView(generics.CreateAPIView):
         token = request.META.get('HTTP_AUTHORIZATION')[7:]
         tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
         valid_data = tokenBackend.decode(token, verify=False)
-        print("++++++++++++++++++++++++++++++++++++++++++++++")
+
+
         request_body=request.data['data']
-        data= json.loads(request_body)
-        print(data['user_id'])
+        datos= json.loads(request_body)
+
         
 
-        if valid_data['user_id'] != request.data['user_id']:
+        if valid_data['user_id'] != datos['user_id']:
             stringResponse = {'detail':'Acceso no autorizado - Creación de producto'}
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
 
         if len(request.FILES) !=0:
-            pro=request.FILES['img']
+            pro=request.FILES['audio']
             print(pro)
-        serializer = ProductSerializer(data=request.data['product_data'])
 
-        
+        set_data=datos['product_data']
+        set_data['prod_urlproduct']=request.FILES['audio']
+        set_data['prod_urlimagen']=request.FILES['imagen']
 
-
-        print({**request.POST,**request.FILES})
-        datos = request.data['product_data']
-        filea =datos["prod_urlimagen"]
-        fileb = datos['prod_urlproduct']
-        print("##################################################")
-        print(filea)
-        print("##################################################")
-        print(fileb)
-        print("##################################################")
-   
+        serializer = ProductSerializer(data=set_data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
