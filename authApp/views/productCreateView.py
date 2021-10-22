@@ -22,9 +22,8 @@ class ProductCreateView(generics.CreateAPIView):
 
         serializer = ProductSerializer(data=request.data['product_data'])
         print(request.FILES)
-        datos = request.data['product_data']
-        archivo =datos["fileA"]
-        print(archivo)
+        datos = request.data['fileA']
+        print(datos)
    
         serializer.is_valid(raise_exception=True)
         serializer.save()
