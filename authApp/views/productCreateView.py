@@ -5,7 +5,7 @@ from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
 
 from authApp.serializers.productSerializer import ProductSerializer
-
+import json
 
 class ProductCreateView(generics.CreateAPIView):
     serializer_class = ProductSerializer
@@ -16,20 +16,10 @@ class ProductCreateView(generics.CreateAPIView):
         tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
         valid_data = tokenBackend.decode(token, verify=False)
         print("++++++++++++++++++++++++++++++++++++++++++++++")
-        valore=request.data['data']
-        print(valore)
-        print("++++++++++++++++++++++++++++++++++++++++++++++")
-        valore2=valore['user_id']
-        print(valore2)
-        print("++++++++++++++++++++++++++++++++++++++++++++++")
-        valores=request.data['user_id']
-        print(valores)
-        print("++++++++++++++++++++++++++++++++++++++++++++++")
-        valores2=valores['product_data']
-        print(valores2)
-        print("++++++++++++++++++++++++++++++++++++++++++++++")
-        valores3=valores2['prod_user']
-        print(valores3)
+        request_body=request.data['data']
+        data= json.loads(request_body)
+        print(data['user_id'])
+        
 
         if valid_data['user_id'] != request.data['user_id']:
             stringResponse = {'detail':'Acceso no autorizado - Creación de producto'}
