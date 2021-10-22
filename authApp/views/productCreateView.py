@@ -26,9 +26,9 @@ class ProductCreateView(generics.CreateAPIView):
         filea =datos["prod_urlimagen"]
         fileb = datos['prod_urlproduct']
         print("##################################################")
-        print(filea)
+        print(filea[0])
         print("##################################################")
-        print(fileb)
+        print(fileb.name)
         print("##################################################")
    
         serializer.is_valid(raise_exception=True)
