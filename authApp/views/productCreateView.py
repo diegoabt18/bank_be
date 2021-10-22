@@ -20,7 +20,7 @@ class ProductCreateView(generics.CreateAPIView):
             stringResponse = {'detail':'Acceso no autorizado - Creación de producto'}
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
 
-        serializer = ProductSerializer(data=request.data['product_data'])
+        serializer = ProductSerializer(data=request.data['product_data'] + request.FILES or None)
         print(request.FILES)
         datos = request.data['product_data']
         filea =datos["prod_urlimagen"]
