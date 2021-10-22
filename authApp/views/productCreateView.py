@@ -16,10 +16,9 @@ class ProductCreateView(generics.CreateAPIView):
         tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
         valid_data = tokenBackend.decode(token, verify=False)
         print("++++++++++++++++++++++++++++++++++++++++++++++")
-        valores=request.data['product_data']
-        print("++++++++++++++++++++++++++++++++++++++++++++++")
         valores=request.data['data']
         print(valores)
+        print(valores.get('user_id'))
         print("++++++++++++++++++++++++++++++++++++++++++++++")
         valores2=valores['product_data']
         print(valores2)
