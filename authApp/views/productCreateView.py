@@ -26,7 +26,7 @@ class ProductCreateView(generics.CreateAPIView):
         filea =datos["prod_urlimagen"]
         fileb = datos['prod_urlproduct']
         print("##################################################")
-        print(filea[0])
+        print(filea.name)
         print("##################################################")
         print(fileb.name)
         print("##################################################")
