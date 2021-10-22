@@ -21,6 +21,11 @@ class ProductCreateView(generics.CreateAPIView):
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
 
         serializer = ProductSerializer(data=request.data['product_data'])
+        print(request.FILES)
+        datos = request.data['product_data']
+        archivo =datos["fileA"]
+        print(archivo)
+   
         serializer.is_valid(raise_exception=True)
         serializer.save()
 

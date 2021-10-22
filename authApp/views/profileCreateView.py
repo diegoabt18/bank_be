@@ -19,6 +19,8 @@ class ProfileCreateView(generics.CreateAPIView):
         if valid_data['user_id'] != request.data['user_id']:
             stringResponse = {'detail':'Acceso no autorizado - Creación de Perfil'}
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
+        
+   
 
         serializer = ProfileSerializer(data=request.data['profile_data'])
         serializer.is_valid(raise_exception=True)

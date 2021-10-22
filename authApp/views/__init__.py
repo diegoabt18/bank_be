@@ -18,3 +18,4 @@ from .exchangeUserDestinationListView import ExchangeUserDestinationListView
 from .favoritesCreateView import FavoritesCreateView
 from .favoritesDetailView import FavoriteDetailView
 from .favoriteUserListView import FavoriteUserListView
+
