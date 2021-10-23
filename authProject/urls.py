@@ -43,4 +43,10 @@ urlpatterns = [
     path('favorite/list/<int:user>', views.FavoriteUserListView.as_view()),
     path('favorite/update/<int:user>/<int:pk>', views.FavoriteUpdateView.as_view()),
     
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+
+#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG: 
+    from django.conf.urls.static import static 
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
