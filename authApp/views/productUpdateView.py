@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from authApp.models.product import Product
 from authApp.serializers.productSerializer import ProductSerializer
-
+import json
 
 class ProductUpdateView(generics.UpdateAPIView):
     serializer_class = ProductSerializer
@@ -18,9 +18,20 @@ class ProductUpdateView(generics.UpdateAPIView):
         tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
         valid_data = tokenBackend.decode(token, verify=False)
 
+        request_body=request.data['data']
+        datos= json.loads(request_body)
+
         if valid_data['user_id'] != self.kwargs['user']:
-            stringResponse = {'detail':'Acceso no autorizado - Actualización perfil'}
+            stringResponse = {'detail':'Acceso no autorizado - Actualización producto'}
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
+        
+        if len(request.FILES) !=0:
+            pro=request.FILES['audio']
+            print(pro)
+
+        #set_data=datos['product_data']
+        datos['prod_urlproduct']=request.FILES['audio']
+        datos['prod_urlimagen']=request.FILES['imagen']
 
         return super().update(request, *args, **kwargs)
 
