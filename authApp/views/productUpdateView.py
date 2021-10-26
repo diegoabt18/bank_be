@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from authApp.models.product import Product
 from authApp.serializers.productSerializer import ProductSerializer
 import json
+from django.core import serializers
 
 class ProductUpdateView(generics.UpdateAPIView):
     serializer_class = ProductSerializer
@@ -34,8 +35,10 @@ class ProductUpdateView(generics.UpdateAPIView):
         datos['prod_urlproduct']=request.FILES['audio']
         datos['prod_urlimagen']=request.FILES['imagen']
         print(datos)
-        request.data=datos
+        
+        
+        datos=serializers.serialize("json", datos)
 
-        return super().update(request, *args, **kwargs)
+        return super().update(datos, *args, **kwargs)
 
 
