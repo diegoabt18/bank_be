@@ -24,7 +24,7 @@ class ProductDetailView(generics.RetrieveAPIView):
             stringResponse = {'detail':'Acceso no autorizado - Información detallada de Producto'}
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
         
-        queryset = Product.objects.all()
+        queryset = Product.objects.filter(prod_user_id=self.kwargs['user']).filter(prod_id=self.kwargs['pk'])
         print("***********************************")
         allProducts = serializers.serialize("json", queryset)
         print(allProducts)
