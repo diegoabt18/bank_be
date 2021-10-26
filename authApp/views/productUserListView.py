@@ -20,8 +20,6 @@ class ProductUserListView(generics.ListAPIView):
 
         print("***********************************")
         print(valid_data['fields'])
-        print("***********************************")
-        print(valid_data['fields']['prod_user'])
 
 
         if valid_data['user_id'] != self.kwargs['user']:
