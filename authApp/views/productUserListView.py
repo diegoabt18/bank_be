@@ -18,10 +18,10 @@ class ProductUserListView(generics.ListAPIView):
         tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
         valid_data = tokenBackend.decode(token,verify=False)
 
-        print("***********************************")
-        print(valid_data['fields'])
-        print("***********************************")
-        print(valid_data['fields']['prod_user'])
+        # print("***********************************")
+        # print(valid_data['fields'])
+        # print("***********************************")
+        # print(valid_data['fields']['prod_user'])
 
         if valid_data['user_id'] != self.kwargs['user']:
             stringResponse = {'detail':'Acceso no autorizado - Lista de elementos'}
