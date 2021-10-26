@@ -32,6 +32,7 @@ class ProductUpdateView(generics.UpdateAPIView):
         #set_data=datos['product_data']
         datos['prod_urlproduct']=request.FILES['audio']
         datos['prod_urlimagen']=request.FILES['imagen']
+        print(datos)
 
         return super().update(datos, *args, **kwargs)
 
