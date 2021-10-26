@@ -13,7 +13,7 @@ class ProductDetailView(generics.RetrieveAPIView):
     permission_classes = (IsAuthenticated, )
     queryset = Product.objects.all()
     print("***********************************")
-    print(json.loads(queryset))
+    print(queryset)
 
     def get(self, request, *args, **kwargs):
         token = request.META.get('HTTP_AUTHORIZATION')[7:]
