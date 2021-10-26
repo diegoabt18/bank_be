@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from authApp.models.product import Product
 from authApp.serializers.productSerializer import ProductSerializer
-import json
+
 
 class ProductDetailView(generics.RetrieveAPIView):
     serializer_class = ProductSerializer
