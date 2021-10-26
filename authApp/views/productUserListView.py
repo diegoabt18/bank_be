@@ -13,8 +13,8 @@ class ProductUserListView(generics.ListAPIView):
     serializer_class = ProductSerializer
     permission_classes = (IsAuthenticated, )
 
-    def get_queryset(self):
-        token = self.request.META.get('HTTP_AUTHORIZATION')[7:]
+    def get(self, request, *args, **kwargs):
+        token = request.META.get('HTTP_AUTHORIZATION')[7:]
         tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
         valid_data = tokenBackend.decode(token,verify=False)
 
@@ -23,7 +23,7 @@ class ProductUserListView(generics.ListAPIView):
         # print("***********************************")
         # print(valid_data['fields']['prod_user'])
 
-        if valid_data['user_id'] != self.kwargs['user']:
+        if valid_data['user_id'] != kwargs['user']:
             stringResponse = {'detail':'Acceso no autorizado - Lista de elementos'}
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
 
