@@ -22,6 +22,7 @@ class ProductUserListView(generics.ListAPIView):
 
         queryset = Product.objects.filter(prod_user_id=self.kwargs['user'])
 
+        
         return queryset
 
 
