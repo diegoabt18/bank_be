@@ -20,6 +20,7 @@ class ProductUpdateView(generics.UpdateAPIView):
 
         request_body=request.data['data']
         datos= json.loads(request_body)
+        print(datos)
 
         if valid_data['user_id'] != self.kwargs['user']:
             stringResponse = {'detail':'Acceso no autorizado - Actualización producto'}
@@ -33,7 +34,8 @@ class ProductUpdateView(generics.UpdateAPIView):
         datos['prod_urlproduct']=request.FILES['audio']
         datos['prod_urlimagen']=request.FILES['imagen']
         print(datos)
+        request.data=datos
 
-        return super().update(datos, *args, **kwargs)
+        return super().update(request, *args, **kwargs)
 
 
