@@ -6,12 +6,14 @@ from rest_framework.permissions import IsAuthenticated
 
 from authApp.models.product import Product
 from authApp.serializers.productSerializer import ProductSerializer
-
+import json
 
 class ProductDetailView(generics.RetrieveAPIView):
     serializer_class = ProductSerializer
     permission_classes = (IsAuthenticated, )
     queryset = Product.objects.all()
+    print("***********************************")
+    print(json.loads(queryset))
 
     def get(self, request, *args, **kwargs):
         token = request.META.get('HTTP_AUTHORIZATION')[7:]
