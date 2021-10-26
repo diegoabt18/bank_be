@@ -11,6 +11,8 @@ class ProductDetailView(generics.RetrieveAPIView):
     serializer_class = ProductSerializer
     permission_classes = (IsAuthenticated, )
     queryset = Product.objects.all()
+    print("***********************************")
+    print(queryset)
 
     def get(self, request, *args, **kwargs):
         token = request.META.get('HTTP_AUTHORIZATION')[7:]
