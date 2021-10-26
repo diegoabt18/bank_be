@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from authApp.models.product import Product
 from authApp.serializers.productSerializer import ProductSerializer
+from django.core import serializers
 
 class ProductDetailView(generics.RetrieveAPIView):
     serializer_class = ProductSerializer
