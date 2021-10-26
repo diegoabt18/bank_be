@@ -6,6 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 
 from authApp.models.product import Product
 from authApp.serializers.productSerializer import ProductSerializer
+from django.core import serializers
+from django.http import HttpResponse
 
 class ProductUserListView(generics.ListAPIView):
     serializer_class = ProductSerializer
@@ -21,8 +23,12 @@ class ProductUserListView(generics.ListAPIView):
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
 
         queryset = Product.objects.filter(prod_user_id=self.kwargs['user'])
-
-        
-        return queryset
+        print("***********************************")
+        print(queryset)
+        allProductsByUSer = serializers.serialize("json", queryset)
+        print("***********************************")
+        print(allProductsByUSer)
+        # return queryset
+        return HttpResponse(allProductsByUSer, content_type='application/json')
 
 
