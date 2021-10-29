@@ -42,7 +42,9 @@ class ProductUpdateView(generics.UpdateAPIView):
         print(datos)
         #request.data=datos
         print("+++++++++++++XXXXXXXx++++++++++++++")
-        datos.update()
+        Productosql = Product.objects.filter(prod_user_id=self.kwargs['user']).filter(prod_id=self.kwargs['pk'])
+        print(Productosql)
+        Productosql.update(datos)
         # print(request.data)
         
         return Response("Producto creado", status=status.HTTP_201_CREATED)
