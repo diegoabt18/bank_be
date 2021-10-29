@@ -40,7 +40,11 @@ class ProductUpdateView(generics.UpdateAPIView):
         datos=ProductSerializer(data=datos)
         #datos=serializers.serialize("json", datos)
         print(datos)
+        request.data=datos
+        print("+++++++++++++XXXXXXXx++++++++++++++")
+        print(request.data)
+        
 
-        return super().update(datos, *args, **kwargs)
+        return super().update(request, *args, **kwargs)
 
 
