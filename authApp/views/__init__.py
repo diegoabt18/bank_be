@@ -1,5 +1,6 @@
 from .userCreateView import UserCreateView
 from .userDetailView import UserDetailView
+from .userListView import UserListView
 from .profileCreateView import ProfileCreateView
 from .profileDetailView import ProfileDetailView
 from .profileUpdateView import ProfileUpdateView
