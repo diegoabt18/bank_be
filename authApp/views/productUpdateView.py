@@ -45,7 +45,7 @@ class ProductUpdateView(generics.UpdateAPIView):
         Productosql = Product.objects.filter(prod_user_id=self.kwargs['user']).filter(prod_id=self.kwargs['pk'])
         jsonprod=serializers.serialize("json", Productosql)
         print(jsonprod)
-        print(jsonprod[0]["fields"])
+        #print(jsonprod[0]["fields"])
        # Productosql.update(datosdefinitivos)
         # print(request.data)
         
