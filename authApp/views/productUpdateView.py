@@ -43,9 +43,10 @@ class ProductUpdateView(generics.UpdateAPIView):
         #request.data=datos
         print("+++++++++++++XXXXXXXx++++++++++++++")
         Productosql = Product.objects.filter(prod_user_id=self.kwargs['user']).filter(prod_id=self.kwargs['pk'])
-        datosdefinitivos=Productosql[0]["fields"]
-        print(datosdefinitivos)
-        Productosql.update(datosdefinitivos)
+        jsonprod=serializers.serialize("json", Productosql)
+        print(jsonprod)
+        print(jsonprod[0]["fields"])
+       # Productosql.update(datosdefinitivos)
         # print(request.data)
         
         return Response("Producto creado", status=status.HTTP_201_CREATED)
