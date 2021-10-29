@@ -36,8 +36,9 @@ class ProductUpdateView(generics.UpdateAPIView):
         datos['prod_urlimagen']=request.FILES['imagen']
         print(datos)
         
-        
+        print("+++++++++++++++++++++++++++")
         datos=serializers.serialize("json", datos)
+        print(datos)
 
         return super().update(datos, *args, **kwargs)
 
