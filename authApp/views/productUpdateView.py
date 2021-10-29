@@ -1,5 +1,5 @@
 from django.conf import settings
-from rest_framework import generics, status
+from rest_framework import fields, generics, status
 from rest_framework.response import Response
 from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
@@ -43,8 +43,9 @@ class ProductUpdateView(generics.UpdateAPIView):
         #request.data=datos
         print("+++++++++++++XXXXXXXx++++++++++++++")
         Productosql = Product.objects.filter(prod_user_id=self.kwargs['user']).filter(prod_id=self.kwargs['pk'])
-        print(Productosql)
-        Productosql.update(datos)
+        datosdefinitivos=Productosql[0]["fields"]
+        print(datosdefinitivos)
+        Productosql.update(datosdefinitivos)
         # print(request.data)
         
         return Response("Producto creado", status=status.HTTP_201_CREATED)
