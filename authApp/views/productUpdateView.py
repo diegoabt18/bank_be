@@ -14,7 +14,7 @@ class ProductUpdateView(generics.UpdateAPIView):
     permission_classes = (IsAuthenticated, )
     queryset = Product.objects.all()
 
-    def post(self, request, *args, **kwargs):
+    def put(self, request, *args, **kwargs):
         token = request.META.get('HTTP_AUTHORIZATION')[7:]
         tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
         valid_data = tokenBackend.decode(token, verify=False)
@@ -40,11 +40,12 @@ class ProductUpdateView(generics.UpdateAPIView):
         datos=ProductSerializer(data=datos)
         #datos=serializers.serialize("json", datos)
         print(datos)
-        request.data=datos
+        #request.data=datos
         print("+++++++++++++XXXXXXXx++++++++++++++")
-        print(request.data)
+        datos.update()
+        # print(request.data)
         
-
-        return super().update(request, *args, **kwargs)
+        return Response("Producto creado", status=status.HTTP_201_CREATED)
+        #return super().update(request, *args, **kwargs)
 
 
